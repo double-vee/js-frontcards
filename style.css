@@ -17,7 +17,9 @@
   --font-title: 'Poppins', sans-serif;
   --font-text: 'Source Sans 3', sans-serif;
   --font-code: 'Source Code Pro', monospace;
-  --card-max-width: 520px;
+  --max-width-card: 520px;
+  --min-width-card: 380px;
+  --min-width-card-lg: 480px;
 }
 
 *,
@@ -49,7 +51,6 @@ h2 {
 .container {
   min-height: 100%;
   width: 100%;
-  max-width: 960px;
   margin-inline: auto;
   padding: 2rem 1rem;
   display: flex;
@@ -123,8 +124,7 @@ h2 {
 }
 
 .card-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1rem;
   list-style: none;
 }
@@ -239,7 +239,6 @@ code:not(.usage, .card__note__block code) {
 
 .comment {
   color: var(--txt-comment);
-  font-size: 0.875rem;
 }
 
 .footer {
@@ -249,6 +248,10 @@ code:not(.usage, .card__note__block code) {
 }
 
 @media (min-width: 550px) {
+  .container {
+    max-width: 1250px;
+  }
+
   .header,
   .main {
     margin-bottom: 3.5rem;
@@ -258,12 +261,18 @@ code:not(.usage, .card__note__block code) {
     font-size: 4.5rem;
   }
 
-  .card-wrapper {
-    max-width: var(--card-max-width);
+  .card-list {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--min-width-card), 1fr)
+    );
+    align-items: center;
   }
 
-  .card__note__block code,
-  .comment {
-    font-size: 0.965rem;
+  .card-list:has(.methods) {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--min-width-card-lg), 1fr)
+    );
   }
 }
