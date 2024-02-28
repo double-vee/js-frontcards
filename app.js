@@ -38,7 +38,7 @@ function showCards(category) {
         <button class="btn card front ${category}">
           <h2 class="card__title">${card.front}</h2>
         </button>
-        <button class="btn card back ${category}">
+        <button class="btn card back ${category}" aria-hidden="true" tabIndex="-1">
           <h2 class="card__title">${card.front}</h2>
           <ul class="card__notes">${notesHtml}
           </ul>
@@ -63,6 +63,15 @@ function showCards(category) {
 
       for (let child of children) {
         child.classList.toggle('rotate');
+
+        if (child.hasAttribute('tabIndex')) {
+          child.removeAttribute('tabIndex');
+          child.removeAttribute('aria-hidden');
+          child.focus();
+        } else {
+          child.setAttribute('tabIndex', '-1');
+          child.setAttribute('aria-hidden', 'true');
+        }
       }
     }
   });
