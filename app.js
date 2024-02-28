@@ -1,7 +1,8 @@
 const categorySection = document.querySelector('.category-section');
 const cardList = document.querySelector('.card-list');
 
-const categories = data.map((category) => category.name);
+let categories = data.map((item) => item.category);
+categories = new Set(categories);
 
 function showCategories() {
   categories.forEach((category) => {
@@ -13,17 +14,17 @@ function showCategories() {
 
   const categoryButtons = document.querySelectorAll('.category');
 
-  categoryButtons.forEach((btn, i) => {
+  categoryButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       let categoryName = e.target.textContent.toLowerCase();
       cardList.innerHTML = '';
-      showCards(i, categoryName);
+      showCards(categoryName);
     });
   });
 }
 
-function showCards(i, category) {
-  let cards = data[i].cards;
+function showCards(category) {
+  let cards = data.filter((item) => item.category.toLowerCase() === category);
 
   cards.forEach((card) => {
     let notesHtml = ``;
