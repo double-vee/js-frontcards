@@ -13,11 +13,11 @@
   --txt-term: #0000ff;
   --txt-code: #eff2f6;
   --txt-code-secondary: #e18b68;
-  --txt-comment: #7d8da8;
+  --txt-comment: #7a91b8;
   --font-title: 'Poppins', sans-serif;
   --font-text: 'Source Sans 3', sans-serif;
   --font-code: 'Source Code Pro', monospace;
-  --max-width-card: 520px;
+  --max-width-card: 60ch;
   --min-width-card: 380px;
   --min-width-card-lg: 480px;
 }
@@ -253,7 +253,7 @@ code:not(.usage, .card__note__block code) {
 
 @media (min-width: 550px) {
   .container {
-    max-width: 60ch;
+    max-width: var(--max-width-card);
     padding-top: 4rem;
   }
 
