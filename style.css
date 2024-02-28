@@ -254,6 +254,7 @@ code:not(.usage, .card__note__block code) {
 @media (min-width: 550px) {
   .container {
     max-width: 60ch;
+    padding-top: 4rem;
   }
 
   .header,
