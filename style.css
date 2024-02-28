@@ -1,6 +1,6 @@
 :root {
   --primary: #0d1118;
-  --secondary: #edf4f8;
+  --secondary: #fffff4;
   --bg-card: #feffe6;
   --bg-code: #edede0;
   --bg-code-block: #1a202d;
@@ -71,6 +71,7 @@ h2 {
 
 .header__intro {
   color: var(--txt-comment);
+  font-size: 0.938rem;
 }
 
 .main {
@@ -98,7 +99,7 @@ h2 {
   background-color: var(--secondary);
   color: var(--txt-note);
   font-family: var(--font-title);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
 }
 
@@ -164,7 +165,7 @@ h2 {
 .card__title {
   color: var(--txt-note);
   font-family: var(--font-title);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 500;
 }
 
@@ -172,6 +173,10 @@ h2 {
   margin-top: -2px;
   margin-bottom: 1rem;
   line-height: 1.4;
+}
+
+.back.methods .card__title {
+  display: none;
 }
 
 .card__notes {
@@ -229,7 +234,6 @@ code:not(.usage, .card__note__block code) {
 
 .term {
   color: var(--txt-term);
-  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -249,7 +253,7 @@ code:not(.usage, .card__note__block code) {
 
 @media (min-width: 550px) {
   .container {
-    max-width: 1250px;
+    max-width: 60ch;
   }
 
   .header,
@@ -259,6 +263,15 @@ code:not(.usage, .card__note__block code) {
 
   .header__title {
     font-size: 4.5rem;
+  }
+
+  .header__intro {
+    font-size: 1rem;
+  }
+
+  .category,
+  .card__title {
+    font-size: 1.25rem;
   }
 
   .card-list {
@@ -274,5 +287,11 @@ code:not(.usage, .card__note__block code) {
       auto-fill,
       minmax(var(--min-width-card-lg), 1fr)
     );
+  }
+}
+
+@media (min-width: 1050px) {
+  .container {
+    max-width: 1250px;
   }
 }
