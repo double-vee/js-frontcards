@@ -7,7 +7,7 @@ categories = new Set(categories);
 function showCategories() {
   categories.forEach((category) => {
     let categoryHtml = `
-      <button class="btn category ${category.toLowerCase()}">${category}</button>
+      <button class="btn category ${category.toLowerCase()}" aria-label="Select category">${category}</button>
     `;
     categorySection.innerHTML += categoryHtml;
   });
@@ -35,10 +35,10 @@ function showCards(category) {
 
     let cardHtml = `
       <li class="card-wrapper">
-        <button class="btn card front ${category}">
+        <button class="btn card front ${category}" aria-label="Show notes">
           <h2 class="card__title">${card.front}</h2>
         </button>
-        <button class="btn card back ${category}" aria-hidden="true" tabIndex="-1">
+        <button class="btn card back ${category}" aria-label="Show card title" aria-hidden="true" tabIndex="-1">
           <h2 class="card__title">${card.front}</h2>
           <ul class="card__notes">${notesHtml}
           </ul>
