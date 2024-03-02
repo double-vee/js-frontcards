@@ -38,7 +38,7 @@ function showCards(category) {
         <button class="btn card front ${category}" aria-label="Show notes">
           <h2 class="card__title">${card.front}</h2>
         </button>
-        <button class="btn card back ${category}" aria-label="Show card title" aria-hidden="true" tabIndex="-1">
+        <button class="btn card back ${category}" aria-label="Hide notes" aria-hidden="true" tabIndex="-1">
           <h2 class="card__title">${card.front}</h2>
           <ul class="card__notes">${notesHtml}
           </ul>
@@ -52,31 +52,41 @@ function showCards(category) {
   const cardWrappers = document.querySelectorAll('.card-wrapper');
 
   cardWrappers.forEach((wrapper) => {
-    let finalHeight = wrapper.lastElementChild.scrollHeight;
-
-    wrapper.style.height = finalHeight + 16 + 'px';
-
+    setCardHeight(wrapper);
     wrapper.addEventListener('click', toggleRotate);
-
-    function toggleRotate(e) {
-      let children = e.currentTarget.children;
-
-      for (let child of children) {
-        child.classList.toggle('rotate');
-
-        if (child.hasAttribute('tabIndex')) {
-          child.removeAttribute('tabIndex');
-          child.removeAttribute('aria-hidden');
-          child.focus();
-        } else {
-          child.setAttribute('tabIndex', '-1');
-          child.setAttribute('aria-hidden', 'true');
-        }
-      }
-    }
   });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  showCategories();
-});
+function setCardHeight(element) {
+  element.style.height = 0 + 'px';
+  let finalHeight = element.lastElementChild.scrollHeight;
+  element.style.height = finalHeight + 16 + 'px';
+}
+
+function toggleRotate(e) {
+  let children = e.currentTarget.children;
+
+  for (let child of children) {
+    child.classList.toggle('rotate');
+
+    if (child.hasAttribute('tabIndex')) {
+      child.removeAttribute('tabIndex');
+      child.removeAttribute('aria-hidden');
+      child.focus();
+    } else {
+      child.setAttribute('tabIndex', '-1');
+      child.setAttribute('aria-hidden', 'true');
+    }
+  }
+}
+
+function resizeCards() {
+  const cardWrappers = document.querySelectorAll('.card-wrapper');
+
+  cardWrappers.forEach((wrapper) => {
+    setCardHeight(wrapper);
+  });
+}
+
+window.addEventListener('DOMContentLoaded', showCategories);
+window.addEventListener('resize', resizeCards);
