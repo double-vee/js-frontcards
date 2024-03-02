@@ -37,7 +37,6 @@ body {
   color: var(--secondary);
   font-family: var(--font-title);
   font-weight: 400;
-  -webkit-font-smoothing: antialiased;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
@@ -170,8 +169,8 @@ h2 {
 }
 
 .back .card__title {
-  margin-top: -2px;
-  margin-bottom: 1rem;
+  margin-top: -0.125rem;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
 }
 
