@@ -16,6 +16,9 @@ function showCategories() {
 
   categoryButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
+      document.querySelector('.active')?.classList.remove('active');
+      e.target.classList.add('active');
+
       let categoryName = e.target.textContent.toLowerCase();
       cardList.innerHTML = '';
       showCards(categoryName);

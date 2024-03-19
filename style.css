@@ -102,16 +102,12 @@ h2 {
   font-weight: 600;
 }
 
-.category.css:hover,
-.category.css:focus,
-.front.css {
-  background-color: var(--bg-blue);
-}
-
 .category.javascript:hover,
 .category.javascript:focus,
+.category.javascript.active,
 .category.methods:hover,
 .category.methods:focus,
+.category.methods.active,
 .front.javascript,
 .front.methods {
   background-color: var(--bg-yellow);
@@ -119,6 +115,7 @@ h2 {
 
 .category.react:hover,
 .category.react:focus,
+.category.react.active,
 .front.react {
   background-color: var(--bg-light-blue);
 }
@@ -135,7 +132,8 @@ h2 {
 
 .card {
   position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
   padding: 1rem;
   backface-visibility: hidden;
